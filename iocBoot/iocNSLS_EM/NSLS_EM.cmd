@@ -1,12 +1,12 @@
-epicsEnvSet("PREFIX",    "quadEMTest:")
-epicsEnvSet("RECORD",    "NSLS_EM")
-epicsEnvSet("PORT",      "NSLS_EM")
-epicsEnvSet("TEMPLATE",  "NSLS_EM")
-epicsEnvSet("QSIZE",     "20")
-epicsEnvSet("RING_SIZE", "10000")
-epicsEnvSet("TSPOINTS",  "1000")
-epicsEnvSet("BROADCAST", "164.54.160.255")
-epicsEnvSet("MODULE_ID", "0")
+#epicsEnvSet("PREFIX",    "quadEMTest:")
+#epicsEnvSet("RECORD",    "NSLS_EM")
+#epicsEnvSet("PORT",      "NSLS_EM")
+#epicsEnvSet("TEMPLATE",  "NSLS_EM")
+#epicsEnvSet("QSIZE",     "20")
+#epicsEnvSet("RING_SIZE", "10000")
+#epicsEnvSet("TSPOINTS",  "1000")
+#epicsEnvSet("BROADCAST", "164.54.160.255")
+#epicsEnvSet("MODULE_ID", "0")
 
 # Load asynRecord record
 dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn1,PORT=TCP_Command_$(PORT),ADDR=0,OMAX=256,IMAX=256")
@@ -22,7 +22,7 @@ asynSetTraceIOMask("TCP_Data_$(PORT)", 0, 2)
 
 dbLoadRecords("$(QUADEM)/db/$(TEMPLATE).template", "P=$(PREFIX), R=$(RECORD):, PORT=$(PORT)")
 
-< ../commonPlugins.cmd
+< $(QUADEM)/iocBoot/commonPlugins.cmd
 
 asynSetTraceIOMask("$(PORT)",0,2)
 #asynSetTraceMask("$(PORT)",  0,9)
@@ -37,7 +37,7 @@ asynSetTraceIOMask("$(PORT)",0,2)
 initFastSweep("$(PORT)TS", "$(PORT)", 11, 2048, "QE_INT_ARRAY_DATA", "QE_SAMPLE_TIME")
 dbLoadRecords("$(QUADEM)/db/quadEM_TimeSeries.template", "P=$(PREFIX),R=$(RECORD)_TS:,NUM_TS=2048,NUM_FREQ=1024,PORT=$(PORT)TS")
 
-< ../saveRestore.cmd
+< $(QUADEM)/iocBoot/saveRestore.cmd
 
 iocInit()
 

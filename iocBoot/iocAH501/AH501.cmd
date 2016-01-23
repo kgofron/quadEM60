@@ -1,17 +1,17 @@
-epicsEnvSet("PREFIX",    "quadEMTest:")
-epicsEnvSet("RECORD",    "AH501")
-epicsEnvSet("PORT",      "AH501")
-epicsEnvSet("TEMPLATE",  "AH501")
-epicsEnvSet("MODEL",     "AH501D")
-epicsEnvSet("QSIZE",     "20")
-epicsEnvSet("RING_SIZE", "10000")
-epicsEnvSet("TSPOINTS",  "1000")
-epicsEnvSet("IP",        "164.54.160.11:10001")
+#epicsEnvSet("PREFIX",    "quadEMTest:")
+#epicsEnvSet("RECORD",    "AH501")
+#epicsEnvSet("PORT",      "AH501")
+#epicsEnvSet("TEMPLATE",  "AH501")
+#epicsEnvSet("MODEL",     "AH501D")
+#epicsEnvSet("QSIZE",     "20")
+#epicsEnvSet("RING_SIZE", "10000")
+#epicsEnvSet("TSPOINTS",  "1000")
+#epicsEnvSet("IP",        "164.54.160.11:10001")
 
-< ../AHxxx.cmd
+< $(QUADEM)/iocBoot/AHxxx.cmd
 dbLoadRecords("$(QUADEM)/db/AH501.template", "P=$(PREFIX), R=$(RECORD):, PORT=$(PORT)")
 
-< ../saveRestore.cmd
+< $(QUADEM)/iocBoot/saveRestore.cmd
 
 iocInit()
 
