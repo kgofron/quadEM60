@@ -22,3 +22,4 @@ Additional information:
 * [Home page](http://cars.uchicago.edu/software/epics/quadEM.html)
 * [Documentation](http://cars.uchicago.edu/software/epics/quadEMDoc.html)
 * [Release notes](http://cars.uchicago.edu/software/epics/quadEMReleaseNotes.html)
+# quadEM60
